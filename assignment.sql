@@ -9,9 +9,9 @@ create table AUTHOR(
 	primary key(EmailAddr)
 ) engine=myisam charset=utf8;
 
-insert into AUTHOR values('tom123@pace.edu', 'Tom', 'James');
-insert into AUTHOR values('James456@pace.edu', 'Chin', 'James');
-insert into AUTHOR values('Chh776@pace.edu', 'Jerry', 'Gg');
+insert into AUTHOR values('ALex@gmail.com', 'Zhao', 'Alex');
+insert into AUTHOR values('Bob@gmail.com', 'Qian', 'Bob');
+insert into AUTHOR values('Cancy@gmail.com', 'Sun', 'Cancy');
 
 select * from AUTHOR;
 
@@ -23,9 +23,9 @@ create table PAPER(
 	primary key(ID)
 ) engine=myisam charset=utf8 auto_increment=1;
 
-insert into PAPER (Title, Abstract, FileName) values('Java', 'Learning', 'JavaLearning');
-insert into PAPER (Title, Abstract, FileName) values('WebDevelopment', 'Develop a website', 'WebsiteLearning');
-insert into PAPER (Title, Abstract, FileName) values('ComputerDevelop', 'Basic competer science', 'ComputerLearning');
+insert into PAPER (Title, Abstract, FileName) values('Java', 'Learning', 'Homework1');
+insert into PAPER (Title, Abstract, FileName) values('Database', 'Learning', 'Homework2');
+insert into PAPER (Title, Abstract, FileName) values('Network', 'Learning', 'Homework2');
 
 create table AUTHOR_SUBMITS_PAPER(
 	ID_PAPER smallint(4) unsigned not null,
@@ -34,22 +34,23 @@ create table AUTHOR_SUBMITS_PAPER(
 	foreign key(EmailAddr_AUTHOR) references AUTHOR(EmailAddr)
 ) engine=myisam charset=utf8;
 
-insert into AUTHOR_SUBMITS_PAPER values(1, 'tom123@pace.edu');
-insert into AUTHOR_SUBMITS_PAPER values(2, 'James456@pace.edu');	
+insert into AUTHOR_SUBMITS_PAPER values(1, 'ALex@gmail.com');
+insert into AUTHOR_SUBMITS_PAPER values(2, 'Bob@gmail.com');	
 
 create table REVIEWER(
 	EmailAddr varchar(20) not null default '',
-	FirstName varchar(20) not null default '',
 	LastName varchar(20) not null default '',
-	AuthorFeedback varchar(30) not null default '',
+	FirstName varchar(20) not null default '',
+	AuthorFeedback varchar(20) not null default '',
 	PhoneNum int(15) not null default 0,
 	Affiliation varchar(20) not null default '',
 	primary key(EmailAddr)
 ) engine=myisam charset=utf8;
 
-insert into REVIEWER values('aaa111@pace.edu', 'aa', 'bb', 'Good', '5532445334', 'Project1');
-insert into REVIEWER values('bbb222@pace.edu', 'bb', 'cc', 'Awesome', '5445445332', 'Project2');
-insert into REVIEWER values('ccc233@pace.edu', 'sb', 'cd', 'Not good', '5445443332', 'Project3');
+insert into REVIEWER values('Drux@gmail.com', 'Li', 'Drux', 'Good', '710155321', 'Project1');
+insert into REVIEWER values('Elle@gmail.com', 'Zhou', 'Elle', 'Awesome', '719650399', 'Project2');
+insert into REVIEWER values('Frank@gmail.com', 'Wu', 'Frank', ':)', '689341699', 'Project3');
+insert into REVIEWER values('Grey@gmail.com', 'Zheng', 'Grey', ':(', '718654889', 'Project3');
 
 create table REVIEWER_ASSIGNED_PAPER(
 	ID_PAPER smallint(4) unsigned not null,
@@ -58,9 +59,9 @@ create table REVIEWER_ASSIGNED_PAPER(
 	foreign key(EmailAddr_REVIEWER) references REVIEWER(EmailAddr)
 ) engine=myisam charset=utf8;
 
-insert into REVIEWER_ASSIGNED_PAPER values(1, 'aaa111@pace.edu');
-insert into REVIEWER_ASSIGNED_PAPER values(2, 'bbb222@pace.edu');
-insert into REVIEWER_ASSIGNED_PAPER values(3, 'ccc233@pace.edu');
+insert into REVIEWER_ASSIGNED_PAPER values(1, 'ALex@gmail.com');
+insert into REVIEWER_ASSIGNED_PAPER values(2, 'Bob@gmail.com');
+insert into REVIEWER_ASSIGNED_PAPER values(3, 'Cancy@gmail.com');
 
 create table TOPIC(
 	ID smallint(4) unsigned not null auto_increment,
@@ -68,8 +69,8 @@ create table TOPIC(
 	primary key(ID)
 ) engine=myisam charset=utf8 auto_increment=1;
 
-insert into TOPIC (TopicName) values('ComputerLab');
-insert into TOPIC (TopicName) values('ComputerDevelop');
+insert into TOPIC (TopicName) values('Deaplearning');
+insert into TOPIC (TopicName) values('Network');
 
 create table REVIEWER_HAS_TOPIC(
 	EmailAddr_REVIEWER varchar(20) not null default '',
@@ -78,9 +79,9 @@ create table REVIEWER_HAS_TOPIC(
 	foreign key(EmailAddr_REVIEWER) references REVIEWER(EmailAddr)
 ) engine=myisam charset=utf8;
 
-insert into REVIEWER_HAS_TOPIC values('aaa111@pace.edu', 1);
-insert into REVIEWER_HAS_TOPIC values('bbb222@pace.edu', 2);
-insert into REVIEWER_HAS_TOPIC values('ccc233@pace.edu', 3);
+insert into REVIEWER_HAS_TOPIC values('ALex@gmail.com', 1);
+insert into REVIEWER_HAS_TOPIC values('Bob@gmail.com', 2);
+insert into REVIEWER_HAS_TOPIC values('Cancy@gmail.com', 3);
 
 create table REVIEW(
 	ID smallint(4) unsigned not null auto_increment,
@@ -95,9 +96,9 @@ create table REVIEW(
 	primary key(ID)
 ) engine=myisam charset=utf8 auto_increment=1;
 
-insert into REVIEW values(1, ' ', 100, 1, 80, 1, 50, 90);
-insert into REVIEW values(2, ' ', 99, 2, 60, 2, 70, 80);
-insert into REVIEW values(3, ' ', 88, 3, 70, 3, 80, 100);
+insert into REVIEW values(1, ' ',67, 1, 99, 1, 96, 90);
+insert into REVIEW values(2, ' ', 35, 2, 86, 2, 95, 95);
+insert into REVIEW values(3, ' ', 41, 3, 90, 3, 90, 100);
 
 create table REVIEWER_SUBMITS_REVIEW(
 	ID_REVIEW smallint(4) unsigned not null,
@@ -106,7 +107,7 @@ create table REVIEWER_SUBMITS_REVIEW(
 	foreign key(EmailAddr_REVIEWER) references REVIEWER(EmailAddr)
 ) engine=myisam charset=utf8;
 
-insert into REVIEWER_SUBMITS_REVIEW values(1, 'aaa111@pace.edu');
-insert into REVIEWER_SUBMITS_REVIEW values(2, 'bbb222@pace.edu');
-insert into REVIEWER_SUBMITS_REVIEW values(3, 'ccc233@pace.edu');
+insert into REVIEWER_SUBMITS_REVIEW values(1, 'ALex@gmail.com');
+insert into REVIEWER_SUBMITS_REVIEW values(2, 'Bob@gmail.com');
+
 
