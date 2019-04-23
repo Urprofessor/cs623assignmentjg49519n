@@ -35,7 +35,8 @@ create table AUTHOR_SUBMITS_PAPER(
 ) engine=myisam charset=utf8;
 
 insert into AUTHOR_SUBMITS_PAPER values(1, 'ALex@gmail.com');
-insert into AUTHOR_SUBMITS_PAPER values(2, 'Bob@gmail.com');	
+insert into AUTHOR_SUBMITS_PAPER values(2, 'Bob@gmail.com');
+insert into AUTHOR values('Cancy@gmail.com', 'Sun', 'Cancy');
 
 create table REVIEWER(
 	EmailAddr varchar(20) not null default '',
@@ -50,7 +51,9 @@ create table REVIEWER(
 insert into REVIEWER values('Drux@gmail.com', 'Li', 'Drux', 'Good', '710155321', 'Project1');
 insert into REVIEWER values('Elle@gmail.com', 'Zhou', 'Elle', 'Awesome', '719650399', 'Project2');
 insert into REVIEWER values('Frank@gmail.com', 'Wu', 'Frank', ':)', '689341699', 'Project3');
-insert into REVIEWER values('Grey@gmail.com', 'Zheng', 'Grey', ':(', '718654889', 'Project3');
+insert into REVIEWER values('Grey@gmail.com', 'Zheng', 'Grey', ':(', '718654889', 'Project4');
+insert into REVIEWER values('Harry@gmail.com', 'Wang', 'Harry', 'perfect', '718654999', 'Project5');
+
 
 create table REVIEWER_ASSIGNED_PAPER(
 	ID_PAPER smallint(4) unsigned not null,
